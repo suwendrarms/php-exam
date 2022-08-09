@@ -43,18 +43,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/give-user-permissions', 'UserPermissionController@permissionForUser')->name('permission.user');
     Route::post('/create-user-role', 'UserPermissionController@userRoleCreate')->name('user.role.add');
 
-    //customer
-    Route::get('/customer', 'CustomerController@index')->name('customer.index');
-    Route::post('/update-customer-erp/{id}', 'CustomerController@updateErp');
-    Route::get('/customer-vehicle', 'CustomerController@vehicle')->name('customer.vehicle');
-    Route::get('/show-customer-vehicle/{id}', 'CustomerController@showVehicle')->name('customer.showVhicle');
-    Route::post('/delete-customer-vehicle', 'CustomerController@removeVhicle');
-    Route::post('/edit/customer-vehicle', 'CustomerController@vehicleEdit')->name('vehicle.edit');
-    Route::post('/edit/customer-erp', 'CustomerController@erpEdit')->name('erp.edit');
-    Route::post('/remove/customer', 'CustomerController@removeCustomer');
-    
-    Route::post('/verify-customer-vehicle', 'CustomerController@activeVehicle');
-
     //prescriptions
     Route::get('/prescriptions', 'PrescriptionController@index')->name('prescriptions.index');
     Route::get('/add-prescriptions', 'PrescriptionController@create')->name('prescriptions.add');
