@@ -10,6 +10,7 @@ use App\prescription_image;
 use Illuminate\Support\Facades\Auth;
 use App\drug;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cloudinary;
 
 class PrescriptionController extends Controller
 {
@@ -46,6 +47,8 @@ class PrescriptionController extends Controller
 
     public function uploadImages(Request $request)
     {
+
+
         
         if(count($request->image)<=5){
             $data= prescription::create([
@@ -57,11 +60,13 @@ class PrescriptionController extends Controller
                 'status'=>0
             ]);
     
-            foreach($request->image as $img){
-                $individual_image =  $this->upload->setImageUpload($img);
+            foreach($request->image as $image){
+
+                $image_name = '/images/products/'.time().'_'.rand(1000, 10000).'.'.$image->getClientOriginalExtension();
+                $image->move(public_path('images/products'), $image_name);
                 $image_single=prescription_image::create([
                     'prescription_id'=>$data->id,
-                    'url'=>$individual_image['imagePath'],
+                    'url'=>$image_name,
                     'status'=>0
                 ]);
             }
