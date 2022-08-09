@@ -57,6 +57,12 @@ Database script path
 | `pharmacy@gmail.com`        | `1qaz2wsx`     | **Pharmacy**       |
 | `suwendrarms@gmail.com`     | `1qaz2wsx`     | **User**           |
 
+| email                       | Type              | Description                       |
+| :-------------------------- | :-----------------| :-------------------------------- |
+| `suwendra50@gmail.com`      | `1qaz2wsx`        | **Admin**                         |
+| `pharmacy@gmail.com`        | `1qaz2wsx`        | **Pharmacy**                      |
+| `suwendrarms@gmail.com`     | `1qaz2wsx`        | **User**                          |
+
 
 
 ## 🛠 Development
