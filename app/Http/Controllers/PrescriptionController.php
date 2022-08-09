@@ -46,26 +46,29 @@ class PrescriptionController extends Controller
 
     public function uploadImages(Request $request)
     {
-
-        $data= prescription::create([
-            'user_id'=>Auth::user()->id,
-            'note'=>$request->note,
-            'delivery_address'=>$request->address,
-            'start_time'=>$request->start_time,
-            'end_time'=>$request->end_time,
-            'status'=>0
-        ]);
-
-        foreach($request->image as $img){
-            $individual_image =  $this->upload->setImageUpload($img);
-            $image_single=prescription_image::create([
-                'prescription_id'=>$data->id,
-                'url'=>$individual_image['imagePath'],
+        if(count($request->image)<=5){
+            $data= prescription::create([
+                'user_id'=>Auth::user()->id,
+                'note'=>$request->note,
+                'delivery_address'=>$request->address,
+                'start_time'=>$request->start_time,
+                'end_time'=>$request->end_time,
                 'status'=>0
             ]);
-        }
+    
+            foreach($request->image as $img){
+                $individual_image =  $this->upload->setImageUpload($img);
+                $image_single=prescription_image::create([
+                    'prescription_id'=>$data->id,
+                    'url'=>$individual_image['imagePath'],
+                    'status'=>0
+                ]);
+            }
 
-        return redirect()->route('prescriptions.cus.index')->with('status', 'Image Uploaded Successfully');
+            return redirect()->route('prescriptions.cus.index')->with('message', 'Uploaded Successfully');
+        }else{
+            return redirect()->route('prescriptions.add')->with('message', 'You can upload only five images');
+        }
 
     }
 

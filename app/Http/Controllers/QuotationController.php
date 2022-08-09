@@ -8,6 +8,7 @@ use App\quotation;
 use App\quotation_row;
 use App\notification;
 use App\User;
+use App\prescription;
 
 class QuotationController extends Controller
 {
@@ -70,12 +71,14 @@ class QuotationController extends Controller
 
      public function send(Request $request){
 
-        //dd($request->all());
 
         $qu=quotation::where('user_id',$request->user_id)->where('prescription_id',$request->prescription_id)->first();
 
         $qu->status =1;
         $qu->save();
+        $pr=prescription::where('id',$request->prescription_id)->first();
+        $pr->status=1;
+        $pr->save();
 
         // $details = [
         //     'title' => 'Mail from ItSolutionStuff.com',

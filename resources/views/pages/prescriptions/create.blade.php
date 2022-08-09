@@ -2,6 +2,11 @@
 @section('content')
 <div class="card card-custom">
 	<!-- <div class="card-header flex-wrap border-0 pt-6 pb-0"> -->
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+    @endif
         <form class="form" method="post" action="{{route('prescriptions.uploadImages')}}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
@@ -21,12 +26,12 @@
 
             <div class="form-group row">
                 <div class="col-lg-6">
-                    <label>Start Time</label>
-                    <input type="time" name="start_time" class="form-control" placeholder="Enter name"/>
+                    <label>Delivery Time Slot(start):</label>
+                    <input type="time" name="start_time" id="start_time" class="form-control" placeholder="Enter name" required/>
                 </div>
-                <div class="col-lg-6">
-                    <label>End Time:</label>
-                    <input type="time" name="end_time" class="form-control" placeholder="Enter name"/>
+                <div id="endtime" class="col-lg-6">
+                    <label>Delivery Time Slot(end):</label>
+                    <input type="time" name="end_time" id="end_time" class="form-control" placeholder="Enter name" required/>
                 </div>
             </div>
 
