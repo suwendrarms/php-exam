@@ -46,6 +46,7 @@ class PrescriptionController extends Controller
 
     public function uploadImages(Request $request)
     {
+        
         if(count($request->image)<=5){
             $data= prescription::create([
                 'user_id'=>Auth::user()->id,

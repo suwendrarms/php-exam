@@ -1,4 +1,4 @@
-@extends('layouts.ui.web',['activePage'=>'insurance'])
+@extends('layouts.ui.web',['activePage'=>'drug'])
 @section('content')
 <div class="card card-custom" style="min-height: 700px;">
 	<div class="card-header flex-wrap border-0 pt-6 pb-0">

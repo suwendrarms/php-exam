@@ -10,34 +10,6 @@
 						<!--begin::Nav-->
 					<ul class="menu-nav">
 						@hasanyrole('Admin')
-						<li class="menu-item menu-item-submenu menu-item-rel @if(isset($activePage) && $activePage == 'r') menu-item-here @endif" data-menu-toggle="click" aria-haspopup="true">
-							<a href="javascript:;" class="menu-link menu-toggle">
-								<span class="menu-text">Customers
-								<i id="customer_show" class="fa fa-circle text-danger icon-sm d-none"></i>
-								</span>
-								<i class="menu-arrow"></i>
-							</a>
-							<div class="menu-submenu menu-submenu-classic menu-submenu-left">
-								<ul class="menu-subnav">
-									<li class="menu-item" aria-haspopup="true">
-										<a href="{{route('customer.index')}}" class="menu-link">
-											<span class="menu-text">Pending Registration</span>
-											<span class="menu-desc"></span>
-											<i id="new_user" class="fa fa-circle text-danger icon-sm d-none"></i>
-										</a>
-									</li>
-									<li class="menu-item" aria-haspopup="true">
-										<a href="{{route('customer.vehicle')}}" class="menu-link">
-											<span class="menu-text">Vehicle Verify
-											
-											</span>
-											<span class="menu-desc"></span>
-											<i id="customer_verify" class="fa fa-circle text-danger icon-sm d-none"></i>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
 						
 						<li class="menu-item menu-item-submenu menu-item-rel @if(isset($activePage) && $activePage == 'e') menu-item-here @endif" data-menu-toggle="click" aria-haspopup="true">
 							<a href="javascript:;" class="menu-link menu-toggle">
@@ -78,9 +50,9 @@
 						</li>
 						@endhasanyrole
 						@hasanyrole('Pharmacy|Admin')
-						<li class="menu-item menu-item-submenu menu-item-rel @if(isset($activePage) && $activePage == 'prescriptions') menu-item-here @endif" data-menu-toggle="click" aria-haspopup="true">
+						<li class="menu-item menu-item-submenu menu-item-rel @if(isset($activePage) && $activePage == 'prescriptionse') menu-item-here @endif" data-menu-toggle="click" aria-haspopup="true">
 							<a href="javascript:;" class="menu-link menu-toggle">
-								<span class="menu-text">prescriptions
+								<span class="menu-text">Pharmacy
 								<i id="prescriptions_show" class="fa fa-circle text-danger icon-sm d-none"></i>
 								</span>
 								<i class="menu-arrow"></i>
@@ -98,7 +70,7 @@
 									
 									<li class="menu-item" aria-haspopup="true">
 										<a href="{{route('prescriptions.index')}}" class="menu-link">
-											<span class="menu-text">prescriptions</span>
+											<span class="menu-text">prescriptions view</span>
 											<span class="menu-desc"></span>
 											<i id="prescriptions_show_id" class="fa fa-circle text-danger icon-sm d-none"></i>
 										</a>
@@ -110,7 +82,7 @@
 						@endhasanyrole
 						<li class="menu-item menu-item-submenu menu-item-rel @if(isset($activePage) && $activePage == 'cus') menu-item-here @endif" data-menu-toggle="click" aria-haspopup="true">
 							<a href="javascript:;" class="menu-link menu-toggle">
-								<span class="menu-text">prescriptions
+								<span class="menu-text">Customer prescriptions
 								<i id="customer_show" class="fa fa-circle text-danger icon-sm d-none"></i>
 								</span>
 								<i class="menu-arrow"></i>

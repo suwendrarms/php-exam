@@ -96,6 +96,9 @@
 				@if($val->pStatus==3)
 				<span style="width: 108px;"><span class="label label-lg font-weight-bold label-light-success label-inline">Reject</span></span>
 				@endif
+                @if($val->pStatus==4)
+				<span style="width: 108px;"><span class="label label-lg font-weight-bold label-light-success label-inline">Dispatch</span></span>
+				@endif
 				
             </td>
             <td>

@@ -35,7 +35,6 @@
             <h4>{{$prescription->note}}</h4>
             </div>
         </div>
-        
         <div  class="form-group row">
             <div class="col-lg-12">
             <h4>Images</h4>
@@ -101,10 +100,11 @@
                         </tr>
                 </table>
                 @hasanyrole('User')
-                  
-                  <a href="javascript:void(0);" class="btn btn-success mr-2 add-trash" data-id="{{$quotations->id}}" data-status="2">Accept</a>
+                  @if($prescription->pStatus==1)
+                  <a href="javascript:void(0);" class="btn btn-success mr-2 add-trash" data-prId="{{$prescription->prescription_id}}" data-id="{{$quotations->id}}" data-status="2">Accept</a>
                  
-                  <a href="javascript:void(0);" class="btn btn-primary mr-2 add-trash" data-id="{{$quotations->id}}" data-status="3">Reject</a>
+                  <a href="javascript:void(0);" class="btn btn-primary mr-2 add-trash" data-prId="{{$prescription->prescription_id}}" data-id="{{$quotations->id}}" data-status="3">Reject</a>
+                  @endif
                 @endhasanyrole
                 @hasanyrole('Pharmacy|Admin')
                 @if($quotations->status==0)
@@ -185,7 +185,7 @@
   
 	var content_id = $(this).attr('data-id');
   var status = $(this).attr('data-status');
-	
+  var pr_id = $(this).attr('data-prId');
 
    
 	 $.confirm({
@@ -198,6 +198,7 @@
  
 			 formData.append('id', content_id);
        formData.append('status', status);
+       formData.append('pr_id', pr_id);
 		
 			 $.ajaxSetup({
 			   headers: {

@@ -99,7 +99,12 @@ class QuotationController extends Controller
         if($qu){
             $qu->status =$request->status;
             $qu->save();
+
+            $pr=prescription::where('id',$request->pr_id)->first();
+            $pr->status=$request->status;
+            $pr->save();
         }
+        
         if($request->status==2){
             //$this->DbManagement->notificationStatus($request->id,'user_accept');
             $this->DbManagement->addNotification($request->id,'user_accept');

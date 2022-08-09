@@ -68,6 +68,7 @@
 					<th title="Field #4">Phone Number</th>
 					<th title="Field #5">Delivery Address</th>
 					<th title="Field #6">note</th>
+                    <th title="Field #6">status</th>
                     <th title="Field #6">images</th>					
 					<th title="Field #7">Action</th>
 				</tr>
@@ -82,6 +83,23 @@
             <td>{{$val->phone_number}}</td>
             <td>{{$val->delivery_address}}</td>
             <td>{{$val->note}}</td>
+            <td>
+                @if($val->pStatus==0)
+				<span style="width: 108px;"><span class="label label-lg font-weight-bold label-light-success label-inline">Pending</span></span>
+				@endif
+				@if($val->pStatus==1)
+				<span style="width: 108px;"><span class="label label-lg font-weight-bold label-light-success label-inline">quotations Send</span></span>
+				@endif
+				@if($val->pStatus==2)
+				<span style="width: 108px;"><span class="label label-lg font-weight-bold label-light-success label-inline">Accept</span></span>
+				@endif
+				@if($val->pStatus==3)
+				<span style="width: 108px;"><span class="label label-lg font-weight-bold label-light-success label-inline">Reject</span></span>
+				@endif
+                @if($val->pStatus==4)
+				<span style="width: 108px;"><span class="label label-lg font-weight-bold label-light-success label-inline">Dispatch</span></span>
+				@endif
+            </td>
             <td>
                 @if(count($val->images)>0)
                 <span class="d-inline-block" data-toggle="popover" data-content="Please Click Show Images">                 
