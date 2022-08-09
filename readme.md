@@ -47,8 +47,11 @@ Database script path
   SQL_database_script/21_03_2022_ceylon.sql
 
 ```
-
-#### user Login
+#### Live and local server Login
+ 
+```
+  https://phpexam.nenabima.lk/
+```
 
 | email                       | Type              | Description                       |
 | :-------------------------- | :-----------------| :-------------------------------- |
