@@ -44,7 +44,7 @@ Start the server
 Database script path
 
 ```bash
-  SQL_database_script/21_03_2022_ceylon.sql
+  Sql_script/database_sample.sql
 
 ```
 #### Live and local server Login
@@ -53,7 +53,7 @@ Database script path
   https://phpexam.nenabima.lk/
 ```
 
-| email                       | Type              | Description                       |
+| email                       | Type              | Role                              |
 | :-------------------------- | :-----------------| :-------------------------------- |
 | `suwendra50@gmail.com`      | `1qaz2wsx`        | **Admin**                         |
 | `pharmacy@gmail.com`        | `1qaz2wsx`        | **Pharmacy**                      |
