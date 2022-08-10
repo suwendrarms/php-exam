@@ -61,7 +61,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     //quotations
     Route::post('/quotations-process', 'QuotationController@process');
-    Route::post('/quotations-send', 'QuotationController@send')->name('quotations.send');
+    Route::post('/quotations-send', 'QuotationController@send');
     Route::post('/quotations-reject', 'QuotationController@reject');
 
     Route::post('/add-delivery', 'QuotationController@delivery');

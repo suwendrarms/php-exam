@@ -2,7 +2,7 @@
 @section('content')
 <div class="card card-custom">
 	<!-- <div class="card-header flex-wrap border-0 pt-6 pb-0"> -->
-        <form class="form" method="post" action="{{route('quotations.send')}}" enctype="multipart/form-data">
+        <!-- <form class="form" method="post" action="" enctype="multipart/form-data"> -->
         @csrf
         <div class="card-body">
       <input type="hidden" id="user_id" name="user_id" value="{{$prescription->user_id}}"/>
@@ -108,12 +108,13 @@
                 @endhasanyrole
                 @hasanyrole('Pharmacy|Admin')
                 @if($quotations->status==0)
-                <button type="submit" class="btn btn-primary mr-2">Send Quotation</button>
+                
+                <a href="javascript:void(0);" class="btn btn-primary mr-2" onclick="sendInvoice()">Send Quotation</a>
                 @endif
-                @if($quotations->status==2)
+                @if($prescription->pStatus==2)
                 <a href="javascript:void(0);" class="btn btn-success mr-2 add-delivery" data-prId="{{$prescription->prescription_id}}" data-id="{{$quotations->id}}" data-status="4">Dispatch</a>
                 @endif
-                @if($quotations->status==3)
+                @if($prescription->pStatus==3)
                 <a href="javascript:void(0);" class="btn btn-success mr-2 add-delivery" data-prId="{{$prescription->prescription_id}}" data-id="{{$quotations->id}}" data-status="5">Please Contact</a>
                 @endif
                 @endhasanyrole
@@ -129,7 +130,7 @@
         <a href="{{route('prescriptions.index')}}" class="btn btn-outline-danger">Back</a>
         
         </div>
-        </form>
+       
 
 </div>
 @endsection
@@ -185,6 +186,102 @@
 
 
   }
+
+  function sendInvoice(){
+
+  var user_id =$("#user_id").val();
+ var prescription_id =$("#prescription_id").val();
+
+
+
+  var formData = new FormData();
+
+   formData.append('user_id', user_id);
+   formData.append('prescription_id', prescription_id);
+
+   $.ajaxSetup({
+     headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+     }
+   });
+
+
+   $.ajax({
+    url : '/quotations-send',
+    method : 'POST',
+    data : formData,
+    processData: false,  
+    contentType: false, 
+    success : function(data) {
+      
+       console.log(data);
+       if(data == 'success'){
+						 $.alert({
+							 title: 'Success',
+							 content: 'Successfully updated',
+							 type: '',
+						 });
+				}	
+    }
+       
+   });
+
+}
+
+
+  $(document).on('click', '.send', function() {
+  
+	var user_id = $(this).attr('data-uid');
+  var pr_id = $(this).attr('data-p');
+
+   consle.log("dd");
+	 $.confirm({
+	   title: 'Are you sure?',
+	   content: 'you want to change this',
+	   buttons: {
+		  confirm: function () {
+ 
+			 var formData = new FormData();
+ 
+			 formData.append('user_id', user_id);
+       formData.append('prescription_id', pr_id);
+		
+			 $.ajaxSetup({
+			   headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			   }
+			 });
+ 
+ 
+			 $.ajax({
+				url : '/quotations-send',
+				method : 'POST',
+				data : formData,
+				processData: false,  
+				contentType: false, 
+				success : function(data) {
+					
+					 if(data == 'success'){
+						 $.alert({
+							 title: 'Success',
+							 content: 'Successfully updated',
+							 type: '',
+						 });
+						 row.hide();
+					 }
+									
+				}
+					 
+			 });
+		 
+		  },
+		  cancel: function () {
+ 
+		  },
+	   }
+   }); 
+ 
+ });
 
 
   $(document).on('click', '.add-trash', function() {
