@@ -127,7 +127,12 @@ class QuotationController extends Controller
             $pr->status=$request->status;
             $pr->save();
 
-            $this->DbManagement->notificationStatus($request->id,'user_accept');
+            if($request->status==5){
+                $this->DbManagement->notificationStatus($request->id,'user_reject');
+            }else{
+                $this->DbManagement->notificationStatus($request->id,'user_accept');
+            }
+            
         }
     
         return 'success';

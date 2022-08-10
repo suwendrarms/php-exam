@@ -113,6 +113,9 @@
                 @if($quotations->status==2)
                 <a href="javascript:void(0);" class="btn btn-success mr-2 add-delivery" data-prId="{{$prescription->prescription_id}}" data-id="{{$quotations->id}}" data-status="4">Dispatch</a>
                 @endif
+                @if($quotations->status==3)
+                <a href="javascript:void(0);" class="btn btn-success mr-2 add-delivery" data-prId="{{$prescription->prescription_id}}" data-id="{{$quotations->id}}" data-status="5">Please Contact</a>
+                @endif
                 @endhasanyrole
                 @endif
            </div>
