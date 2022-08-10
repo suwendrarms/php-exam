@@ -34,7 +34,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
 		<!--end::Layout Themes-->
-		<link rel = "icon" href = "{{ asset('ui/web/media/logos/logokia.png') }}" type = "image/x-icon">
+		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 		<link
       rel="stylesheet"

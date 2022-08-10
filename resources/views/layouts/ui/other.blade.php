@@ -34,7 +34,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
 		<!--end::Layout Themes-->
-		<link rel = "icon" href = "{{ asset('ui/web/media/logos/logokia.png') }}" type = "image/x-icon">
+		
         
         <style>
            body {
@@ -52,11 +52,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" style="background-image: url(assets/media/bg/bg-1.jpg);">
 					<div class="login-form text-center text-white p-7 position-relative overflow-hidden">
 						<!--begin::Login Header-->
-						<!-- <div class="d-flex flex-center mb-15">
-							<a href="#">
-								<img src="{{ asset('ui/web/media/logos/logokia.png') }}" class="max-h-110px" alt="" />
-							</a>
-						</div> -->
+						
 						<!--end::Login Header-->
 						<!--begin::Login Sign in form-->
 						
