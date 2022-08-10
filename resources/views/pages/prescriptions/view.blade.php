@@ -110,6 +110,9 @@
                 @if($quotations->status==0)
                 <button type="submit" class="btn btn-primary mr-2">Send Quotation</button>
                 @endif
+                @if($quotations->status==2)
+                <a href="javascript:void(0);" class="btn btn-success mr-2 add-delivery" data-prId="{{$prescription->prescription_id}}" data-id="{{$quotations->id}}" data-status="4"></a>
+                @endif
                 @endhasanyrole
                 @endif
            </div>
@@ -209,6 +212,62 @@
  
 			 $.ajax({
 				url : '/quotations-reject',
+				method : 'POST',
+				data : formData,
+				processData: false,  
+				contentType: false, 
+				success : function(data) {
+					
+					 if(data == 'success'){
+						 $.alert({
+							 title: 'Success',
+							 content: 'Successfully updated',
+							 type: '',
+						 });
+						 row.hide();
+					 }
+									
+				}
+					 
+			 });
+		 
+		  },
+		  cancel: function () {
+ 
+		  },
+	   }
+   }); 
+ 
+ });
+
+ $(document).on('click', '.add-delivery', function() {
+  
+	var content_id = $(this).attr('data-id');
+  var status = $(this).attr('data-status');
+  var pr_id = $(this).attr('data-prId');
+
+   
+	 $.confirm({
+	   title: 'Are you sure?',
+	   content: 'you want to change this',
+	   buttons: {
+		  confirm: function () {
+ 
+			 var formData = new FormData();
+ 
+			 formData.append('id', content_id);
+       formData.append('status', status);
+       formData.append('pr_id', pr_id);
+		
+			 $.ajaxSetup({
+			   headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			   }
+			 });
+ 
+ 
+			 $.ajax({
+				url : '/add-delivery',
 				method : 'POST',
 				data : formData,
 				processData: false,  
