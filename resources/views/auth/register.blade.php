@@ -50,7 +50,7 @@
                         </div>
 
 						<div class="form-group">
-                            <label for="email" class="col-md-10 control-label">DOB</label>
+                            <label for="email" class="col-md-10 control-label">Date Of Birth</label>
 
                             <div class="col-md-12">
                                 <input  type="date" class="form-control" name="dob" value="{{ old('dob') }}" required>
