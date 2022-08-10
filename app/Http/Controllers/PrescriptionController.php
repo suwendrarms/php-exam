@@ -48,32 +48,39 @@ class PrescriptionController extends Controller
     public function uploadImages(Request $request)
     {
 
+        $time1 = strtotime($request->start_time);
+        $time2 = strtotime($request->end_time);
+        $difference = round(abs($time2 - $time1) / 3600,2);
 
-        
-        if(count($request->image)<=5){
-            $data= prescription::create([
-                'user_id'=>Auth::user()->id,
-                'note'=>$request->note,
-                'delivery_address'=>$request->address,
-                'start_time'=>$request->start_time,
-                'end_time'=>$request->end_time,
-                'status'=>0
-            ]);
-    
-            foreach($request->image as $image){
-
-                $image_name = '/images/products/'.time().'_'.rand(1000, 10000).'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images/products'), $image_name);
-                $image_single=prescription_image::create([
-                    'prescription_id'=>$data->id,
-                    'url'=>$image_name,
+        if($difference ==2){
+            if(count($request->image)<=5){
+                $data= prescription::create([
+                    'user_id'=>Auth::user()->id,
+                    'note'=>$request->note,
+                    'delivery_address'=>$request->address,
+                    'start_time'=>$request->start_time,
+                    'end_time'=>$request->end_time,
                     'status'=>0
                 ]);
+        
+                foreach($request->image as $image){
+    
+                    $image_name = '/images/products/'.time().'_'.rand(1000, 10000).'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path('images/products'), $image_name);
+                    $image_single=prescription_image::create([
+                        'prescription_id'=>$data->id,
+                        'url'=>$image_name,
+                        'status'=>0
+                    ]);
+                }
+    
+                return redirect()->route('prescriptions.cus.index')->with('message', 'Uploaded Successfully');
+            }else{
+                return redirect()->route('prescriptions.add')->with('message', 'You can upload only five images');
             }
 
-            return redirect()->route('prescriptions.cus.index')->with('message', 'Uploaded Successfully');
         }else{
-            return redirect()->route('prescriptions.cus.index')->with('message', 'You can upload only five images');
+            return redirect()->route('prescriptions.add')->with('message', 'please give two hour time slot');
         }
 
     }
