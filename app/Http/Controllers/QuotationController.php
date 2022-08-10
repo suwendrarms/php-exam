@@ -89,7 +89,7 @@ class QuotationController extends Controller
        
         //\Mail::to($user->email)->send(new \App\Mail\MyTestMail($details));
 
-        return redirect()->route('prescriptions.index')->with('status', 'quotation send successfully');
+        return redirect()->route('prescriptions.index')->with('message', 'quotation send successfully');
      }
 
      public function reject(Request $request){

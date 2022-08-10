@@ -73,7 +73,7 @@ class PrescriptionController extends Controller
 
             return redirect()->route('prescriptions.cus.index')->with('message', 'Uploaded Successfully');
         }else{
-            return redirect()->route('prescriptions.add')->with('message', 'You can upload only five images');
+            return redirect()->route('prescriptions.cus.index')->with('message', 'You can upload only five images');
         }
 
     }

@@ -2,6 +2,11 @@
 @section('content')
 <div class="card card-custom" style="min-height: 700px;">
 	<div class="card-header flex-wrap border-0 pt-6 pb-0">
+	@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+    @endif
 		<div class="card-title">
 			<h3 class="card-label">Prescriptions
 			<span class="d-block text-muted pt-2 font-size-sm"></span></h3>
