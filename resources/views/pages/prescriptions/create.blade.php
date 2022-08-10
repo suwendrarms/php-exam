@@ -20,7 +20,7 @@
             <div class="form-group row">
                 <div class="col-lg-12">
                     <label>Delivery Address:</label>
-                    <input type="text" name="address" class="form-control" placeholder="Enter name" required/>
+                    <input type="text" name="address" class="form-control" placeholder="Enter address" required/>
                 </div>
             </div>
 
