@@ -111,7 +111,7 @@
                 <button type="submit" class="btn btn-primary mr-2">Send Quotation</button>
                 @endif
                 @if($quotations->status==2)
-                <a href="javascript:void(0);" class="btn btn-success mr-2 add-delivery" data-prId="{{$prescription->prescription_id}}" data-id="{{$quotations->id}}" data-status="4"></a>
+                <a href="javascript:void(0);" class="btn btn-success mr-2 add-delivery" data-prId="{{$prescription->prescription_id}}" data-id="{{$quotations->id}}" data-status="4">Dispatch</a>
                 @endif
                 @endhasanyrole
                 @endif
